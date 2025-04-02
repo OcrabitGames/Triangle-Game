@@ -70,17 +70,17 @@ public class TriangulationManager : MonoBehaviour
         if (isDrawing)
         {
             CalculateDistance();
-            if (player1.transform.position != _cachedPlayer1Pos)
+            if (player1 && player1.transform.position != _cachedPlayer1Pos)
             {
                 _cachedPlayer1Pos = player1.transform.position;
                 DrawConnection(_connect12, _connect13, player1.transform.position, player2.transform.position, player3.transform.position, ref _line12, ref _line13);
             }
-            if (player2.transform.position != _cachedPlayer2Pos)
+            if (player2 && player2.transform.position != _cachedPlayer2Pos)
             {
                 _cachedPlayer2Pos = player2.transform.position;
                 DrawConnection(_connect12, _connect23, player2.transform.position, player1.transform.position, player3.transform.position, ref _line12, ref _line23);
             }
-            if (player3.transform.position != _cachedPlayer3Pos)
+            if (player3 && player3.transform.position != _cachedPlayer3Pos)
             {
                 _cachedPlayer3Pos = player3.transform.position;
                 DrawConnection(_connect13, _connect23, player3.transform.position, player1.transform.position, player2.transform.position, ref _line13, ref _line23);
@@ -98,10 +98,16 @@ public class TriangulationManager : MonoBehaviour
 
     private void CalculateDistance()
     {
-        _connect12 = Vector3.Distance(player1.transform.position, player2.transform.position) <= distanceRequired;
-        _connect23 = Vector3.Distance(player2.transform.position, player3.transform.position) <= distanceRequired;
-        _connect13 = Vector3.Distance(player1.transform.position, player3.transform.position) <= distanceRequired;
+        if (player1)
+        {
+            if (player2) _connect12 = Vector3.Distance(player1.transform.position, player2.transform.position) <= distanceRequired;
+            if (player3) _connect13 = Vector3.Distance(player1.transform.position, player3.transform.position) <= distanceRequired;
+        }
 
+        if (player2)
+        {
+            _connect23 = Vector3.Distance(player2.transform.position, player3.transform.position) <= distanceRequired;
+        }
         _allConnected = _connect12 && _connect23 && _connect13;
     }
 
