@@ -190,4 +190,18 @@ public class TriangulationManager : MonoBehaviour
     {
         isDrawing = drawing;
     }
+
+    public void SetPlayer(GameObject player, int num)
+    {
+        if (num == 1)
+        {
+            player1 = player;
+        } else if (num == 2)
+        {
+            player2 = player;
+        } else if (num == 3)
+        {
+            player3 = player;
+        }
+    }
 }
