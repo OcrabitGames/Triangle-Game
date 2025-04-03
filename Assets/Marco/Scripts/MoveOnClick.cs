@@ -5,11 +5,13 @@ public class MoveOnClick : MonoBehaviour
     private Camera mainCamera;
     private bool isDragging = false;
     private Vector3 offset;
+    private AttachManager attatchScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCamera = Camera.main;
+        attatchScript = gameObject.GetComponent<AttachManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,10 @@ public class MoveOnClick : MonoBehaviour
                 if (hit.transform == transform)
                 {
                     isDragging = true;
+                    // Yousab - I added this part, but we should remove it when new movement is added.
+                    if (attatchScript != null) {
+                        attatchScript.StopFollowingEnemy();
+                    }
                     TriangulationManager.Instance.SetDrawing(true);
                     offset = transform.position - hit.point;
                 }
