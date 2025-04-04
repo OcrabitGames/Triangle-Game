@@ -14,11 +14,13 @@ public class PersonTestMovement2 : MonoBehaviour
     public float changeTargetIntervalMax = 7f;
     public float randomTargetRadius = 10f;
     public float smoothFactor = 0.2f;
+    public float inertia = 0.9f;
 
     private List<Rigidbody> groupMembers = new List<Rigidbody>();
+    private Dictionary<Rigidbody, Vector3> velocityCache = new Dictionary<Rigidbody, Vector3>();
     private Vector3 groupTargetPosition;
     private float targetTimer;
-    private Color groupColor; 
+    private Color groupColor;
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class PersonTestMovement2 : MonoBehaviour
             {
                 groupMembers.Add(rb);
                 rb.interpolation = RigidbodyInterpolation.Interpolate;
+                velocityCache[rb] = Vector3.zero;
             }
         }
 
@@ -47,16 +50,21 @@ public class PersonTestMovement2 : MonoBehaviour
 
         foreach (Rigidbody rb in groupMembers)
         {
-            Vector3 moveDirection = (Random.value < wanderChance) 
-                ? Random.insideUnitSphere.normalized 
+            Vector3 moveDirection = (Random.value < wanderChance)
+                ? Random.insideUnitSphere.normalized
                 : CalculateFlockingDirection(rb);
 
             moveDirection.y = 0f;
 
             Vector3 toTarget = (groupTargetPosition - rb.position).normalized;
             moveDirection = Vector3.Lerp(moveDirection, toTarget, smoothFactor);
+            moveDirection = moveDirection.normalized;
 
-            rb.linearVelocity = moveDirection * moveSpeed;
+            Vector3 previousVelocity = velocityCache[rb];
+            Vector3 smoothedVelocity = Vector3.Lerp(previousVelocity, moveDirection * moveSpeed, 1f - inertia);
+            velocityCache[rb] = smoothedVelocity;
+
+            rb.linearVelocity = smoothedVelocity;
         }
     }
 
@@ -68,7 +76,7 @@ public class PersonTestMovement2 : MonoBehaviour
             Random.Range(-randomTargetRadius, randomTargetRadius)
         );
 
-        AssignGroupColor();
+        // AssignGroupColor();
     }
 
     private float GetRandomTargetInterval()
@@ -114,16 +122,16 @@ public class PersonTestMovement2 : MonoBehaviour
         return (alignment + cohesion + separation).normalized;
     }
 
-    private void AssignGroupColor()
-    {
-        groupColor = new Color(Random.value, Random.value, Random.value);
-        foreach (Rigidbody rb in groupMembers)
-        {
-            Renderer renderer = rb.GetComponent<Renderer>();
-            if (renderer != null)
-            {
-                renderer.material.color = groupColor;
-            }
-        }
-    }
+    // private void AssignGroupColor()
+    // {
+    //     groupColor = new Color(Random.value, Random.value, Random.value);
+    //     foreach (Rigidbody rb in groupMembers)
+    //     {
+    //         Renderer renderer = rb.GetComponent<Renderer>();
+    //         if (renderer != null)
+    //         {
+    //             renderer.material.color = groupColor;
+    //         }
+    //     }
+    // }
 }
