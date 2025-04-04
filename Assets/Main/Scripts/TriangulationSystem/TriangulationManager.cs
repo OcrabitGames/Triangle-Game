@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.TextCore;
 
 public class TriangulationManager : MonoBehaviour
 {
@@ -11,10 +10,9 @@ public class TriangulationManager : MonoBehaviour
     public bool isDrawing;
     
     // The three players and their stashed positions
-    // (WARNING) Eventually we need to store prefabs and spawn players then attach them
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
+    private GameObject player1;
+    private GameObject player2;
+    private GameObject player3;
     private Vector3 _cachedPlayer1Pos;
     private Vector3 _cachedPlayer2Pos;
     private Vector3 _cachedPlayer3Pos;
