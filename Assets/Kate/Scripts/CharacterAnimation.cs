@@ -49,10 +49,10 @@ public class CharacterAnimation : MonoBehaviour {
         }
 
         if (GetComponent<PlayerMovement>().xVel < 0f) {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         else if (GetComponent<PlayerMovement>().xVel > 0f) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
         // Dust VFX
