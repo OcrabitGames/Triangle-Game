@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore;
 
 public class TriangulationManager : MonoBehaviour
 {
@@ -54,12 +55,13 @@ public class TriangulationManager : MonoBehaviour
         _triangularPlane = Instantiate(triangularPlanePrefab).GetComponent<TriangularPlane>();
         _triangularPlane.Initialize(timeRequired, this);
         
-        // Calc and Draw Lines
-        CalculateDistance();
-        DrawAllConnections();
-        _cachedPlayer1Pos = player1.transform.position;
-        _cachedPlayer2Pos = player2.transform.position;
-        _cachedPlayer3Pos = player3.transform.position;
+        // Set Up LineCubes
+        _line12 = CreateLineCube(Vector3.zero, Vector3.zero);
+        _line23 = CreateLineCube(Vector3.zero, Vector3.zero);
+        _line13 = CreateLineCube(Vector3.zero, Vector3.zero);
+        
+        // Set Draw Mode Active
+        SetDrawing(true);
     }
 
     // Update is called once per frame
@@ -72,18 +74,21 @@ public class TriangulationManager : MonoBehaviour
             CalculateDistance();
             if (player1 && player1.transform.position != _cachedPlayer1Pos)
             {
+                print($"Logging Player 1 {player1.transform.position}");
                 _cachedPlayer1Pos = player1.transform.position;
-                DrawConnection(_connect12, _connect13, player1.transform.position, player2.transform.position, player3.transform.position, ref _line12, ref _line13);
+                DrawConnection(_connect12, _connect13, player1, player2, player3, ref _line12, ref _line13);
             }
             if (player2 && player2.transform.position != _cachedPlayer2Pos)
             {
+                print($"Logging Player 2 {player2.transform.position}");
                 _cachedPlayer2Pos = player2.transform.position;
-                DrawConnection(_connect12, _connect23, player2.transform.position, player1.transform.position, player3.transform.position, ref _line12, ref _line23);
+                DrawConnection(_connect12, _connect23, player2, player1, player3, ref _line12, ref _line23);
             }
             if (player3 && player3.transform.position != _cachedPlayer3Pos)
-            {
+            {                
+                print($"Logging Player 3 {player3.transform.position}");
                 _cachedPlayer3Pos = player3.transform.position;
-                DrawConnection(_connect13, _connect23, player3.transform.position, player1.transform.position, player2.transform.position, ref _line13, ref _line23);
+                DrawConnection(_connect13, _connect23, player3, player1, player2, ref _line13, ref _line23);
             }
             
             if (_allConnected)
@@ -106,37 +111,51 @@ public class TriangulationManager : MonoBehaviour
 
         if (player2)
         {
-            _connect23 = Vector3.Distance(player2.transform.position, player3.transform.position) <= distanceRequired;
+            if (player3) _connect23 = Vector3.Distance(player2.transform.position, player3.transform.position) <= distanceRequired;
         }
         _allConnected = _connect12 && _connect23 && _connect13;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
-    private void DrawConnection(bool connection1, bool connection2, Vector3 firstPosition, Vector3 secondPosition, Vector3 thirdPosition, ref LineCube line1, ref LineCube line2)
+    private void DrawConnection(bool connection1, bool connection2, GameObject firstObject, GameObject secondObject, GameObject thirdObject, ref LineCube line1, ref LineCube line2)
     {
-        if (connection1)
+        if (firstObject && secondObject)
         {
-            if (line1.isActive)
+            Vector3 firstPosition = firstObject.transform.position;
+            Vector3 secondPosition = secondObject.transform.position;
+            if (connection1)
             {
-                line1.UpdateEndpoints(firstPosition, secondPosition);
+                if (line1.isActive)
+                {
+                    line1.UpdateEndpoints(firstPosition, secondPosition);
+                } else {
+                    line1.Initialize(firstPosition, secondPosition);
+                }
             } else {
-                line1.Initialize(firstPosition, secondPosition);
+                line1.Deactivate();
             }
-        } else {
-            line1.Deactivate();
         }
 
-        if (connection2)
+        if (firstObject && thirdObject)
         {
-            if (line2.isActive) {
-                line2.UpdateEndpoints(firstPosition, thirdPosition);
-            } else {
-                line2.Initialize(firstPosition, thirdPosition);
+            Vector3 firstPosition = firstObject.transform.position;
+            Vector3 thirdPosition = thirdObject.transform.position;
+            if (connection2)
+            {
+                if (line2.isActive)
+                {
+                    line2.UpdateEndpoints(firstPosition, thirdPosition);
+                }
+                else
+                {
+                    line2.Initialize(firstPosition, thirdPosition);
+                }
             }
-        } else {
-            line2.Deactivate();
+            else
+            {
+                line2.Deactivate();
+            }
         }
-        
     }
     
     // ReSharper disable Unity.PerformanceAnalysis
@@ -199,13 +218,13 @@ public class TriangulationManager : MonoBehaviour
 
     public void SetPlayer(GameObject player, int num)
     {
-        if (num == 1)
+        if (num == 0)
         {
             player1 = player;
-        } else if (num == 2)
+        } else if (num == 1)
         {
             player2 = player;
-        } else if (num == 3)
+        } else if (num == 2)
         {
             player3 = player;
         }
