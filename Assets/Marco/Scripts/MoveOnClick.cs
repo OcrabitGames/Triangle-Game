@@ -5,11 +5,14 @@ public class MoveOnClick : MonoBehaviour
     private Camera mainCamera;
     private bool isDragging = false;
     private Vector3 offset;
+    private PlayerFollow _followScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCamera = Camera.main;
+        _followScript = gameObject.GetComponent<PlayerFollow>();
+        
     }
 
     // Update is called once per frame
@@ -24,7 +27,11 @@ public class MoveOnClick : MonoBehaviour
                 if (hit.transform == transform)
                 {
                     isDragging = true;
-                    TriangulationManager.Instance.SetDrawing(true);
+                    // Yousab - I added this part, but we should remove it when new movement is added.
+                    // Marco - I updated the connections! Thanks for the heads-up. :)
+                    if (_followScript) {
+                        _followScript.StopFollowing();
+                    }
                     offset = transform.position - hit.point;
                 }
             }
@@ -34,7 +41,7 @@ public class MoveOnClick : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
-            TriangulationManager.Instance.SetDrawing(false);
+            _followScript.StartFollowing();
         }
 
         if (isDragging)
