@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
 
         xVel = 0f;
         zVel = 0f;
+
+        movementSpeed *= Mathf.Abs(transform.localScale.x);
+        speedLimit *= Mathf.Abs(transform.localScale.x);
     }
 
     // Update is called once per frame
