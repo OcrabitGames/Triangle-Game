@@ -1,13 +1,13 @@
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    private KeyCode left, right, up, down;
-    private Rigidbody rb;
     public float xVel, zVel;
-
     public float movementSpeed;
     public float speedLimit;
     public float friction;
+
+    private KeyCode left, right, up, down;
+    private Rigidbody rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {

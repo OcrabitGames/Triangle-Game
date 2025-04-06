@@ -21,12 +21,13 @@ public class CharacterAnimation : MonoBehaviour {
         blinkTimerThreshold = Random.Range(1f, 3f);
 
         // Set the type of character and get necessary textures
-        if (type == "Crow") {
+        if (type == "Owl") {
             head.GetComponent<Animator>().SetInteger("Type", 1);
             eyes.GetComponent<Animator>().SetInteger("Type", 1);
             body.GetComponent<Animator>().SetInteger("Type", 1);
             tail.GetComponent<Animator>().SetInteger("Type", 1);
-            runCycle = textureManager.GetComponent<TextureManager>().crowRunCycle;
+            runCycle = textureManager.GetComponent<TextureManager>().owlRunCycle;
+            blinkCycle = textureManager.GetComponent<TextureManager>().owlBlinkCycle;
         }
         else if (type == "Fox") {
             head.GetComponent<Animator>().SetInteger("Type", 2);
@@ -34,18 +35,18 @@ public class CharacterAnimation : MonoBehaviour {
             body.GetComponent<Animator>().SetInteger("Type", 2);
             tail.GetComponent<Animator>().SetInteger("Type", 2);
             runCycle = textureManager.GetComponent<TextureManager>().foxRunCycle;
+            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
         }
 
-        // Set character outline and blinking
+        // Set character outline
         outlineRunCycle = textureManager.GetComponent<TextureManager>().outlineRunCycle;
-        blinkCycle = textureManager.GetComponent<TextureManager>().blinkCycle;
         body.transform.GetChild(0).GetComponent<Animator>().SetBool("Outline", true);
     }
 
     // Update is called once per frame
     void Update() {
         // Animate running
-        if (GetComponent<PlayerMovement>().xVel != 0f || GetComponent<PlayerMovement>().zVel != 0f) {
+        if ((gameObject.CompareTag("Player") && (GetComponent<PlayerMovement>().xVel != 0f || GetComponent<PlayerMovement>().zVel != 0f)) || (!gameObject.CompareTag("Player") && (GetComponent<NPCMovement>().xVel != 0f || GetComponent<NPCMovement>().zVel != 0f))) {
             head.GetComponent<Animator>().SetBool("Idle", false);
             body.GetComponent<Animator>().SetBool("Idle", false);
             tail.GetComponent<Animator>().SetBool("Idle", false);
@@ -59,10 +60,10 @@ public class CharacterAnimation : MonoBehaviour {
             body.transform.GetChild(0).GetComponent<Animator>().SetBool("Idle", true);
         }
 
-        if (GetComponent<PlayerMovement>().xVel < 0f) {
+        if ((gameObject.CompareTag("Player") && GetComponent<PlayerMovement>().xVel < 0f) || (!gameObject.CompareTag("Player") && GetComponent<NPCMovement>().xVel < 0f)) {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-        else if (GetComponent<PlayerMovement>().xVel > 0f) {
+        else if ((gameObject.CompareTag("Player") && GetComponent<PlayerMovement>().xVel > 0f) || (!gameObject.CompareTag("Player") && GetComponent<NPCMovement>().xVel > 0f)) {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
 
@@ -79,7 +80,7 @@ public class CharacterAnimation : MonoBehaviour {
 
         // Dust VFX
         dustTimer -= Time.deltaTime;
-        if (dustTimer <= 0f && (GetComponent<PlayerMovement>().xVel != 0f || GetComponent<PlayerMovement>().zVel != 0f)) {
+        if ((gameObject.CompareTag("Player") && dustTimer <= 0f && (GetComponent<PlayerMovement>().xVel != 0f || GetComponent<PlayerMovement>().zVel != 0f)) || (!gameObject.CompareTag("Player") && dustTimer <= 0f && (GetComponent<NPCMovement>().xVel != 0f || GetComponent<NPCMovement>().zVel != 0f))) {
             GameObject dust = Instantiate(dustVFX, new Vector3(transform.position.x, 0.78f, transform.position.z), Quaternion.identity);
             dust.GetComponent<VFXBehavior>().parent = gameObject;
             dustTimer = 0.25f;

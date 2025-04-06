@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class TextureManager : MonoBehaviour {
     public Texture2D[] outlineRunCycle;
-    public Texture2D[] crowRunCycle;
-    public Texture2D[] foxRunCycle;
 
-    public Texture2D[] blinkCycle;
+    public Texture2D[] foxRunCycle;
+    public Texture2D[] foxBlinkCycle;
+
+    public Texture2D[] owlRunCycle;
+    public Texture2D[] owlBlinkCycle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
