@@ -22,19 +22,19 @@ public class CharacterAnimation : MonoBehaviour {
 
         // Set the type of character and get necessary textures
         if (type == "Owl") {
-            head.GetComponent<Animator>().SetInteger("Type", 1);
-            eyes.GetComponent<Animator>().SetInteger("Type", 1);
-            body.GetComponent<Animator>().SetInteger("Type", 1);
-            tail.GetComponent<Animator>().SetInteger("Type", 1);
             runCycle = textureManager.GetComponent<TextureManager>().owlRunCycle;
             blinkCycle = textureManager.GetComponent<TextureManager>().owlBlinkCycle;
         }
-        else if (type == "Fox") {
-            head.GetComponent<Animator>().SetInteger("Type", 2);
-            eyes.GetComponent<Animator>().SetInteger("Type", 2);
-            body.GetComponent<Animator>().SetInteger("Type", 2);
-            tail.GetComponent<Animator>().SetInteger("Type", 2);
-            runCycle = textureManager.GetComponent<TextureManager>().foxRunCycle;
+        else if (type == "Purple Fox") {
+            runCycle = textureManager.GetComponent<TextureManager>().purpleFoxRunCycle;
+            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
+        }
+        else if (type == "Pink Fox") {
+            runCycle = textureManager.GetComponent<TextureManager>().pinkFoxRunCycle;
+            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
+        }
+        else if (type == "Blue Fox") {
+            runCycle = textureManager.GetComponent<TextureManager>().blueFoxRunCycle;
             blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
         }
 

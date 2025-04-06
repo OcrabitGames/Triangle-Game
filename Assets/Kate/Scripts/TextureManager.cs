@@ -3,7 +3,9 @@ using UnityEngine;
 public class TextureManager : MonoBehaviour {
     public Texture2D[] outlineRunCycle;
 
-    public Texture2D[] foxRunCycle;
+    public Texture2D[] purpleFoxRunCycle;
+    public Texture2D[] pinkFoxRunCycle;
+    public Texture2D[] blueFoxRunCycle;
     public Texture2D[] foxBlinkCycle;
 
     public Texture2D[] owlRunCycle;
