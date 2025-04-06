@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class VFXBehavior : MonoBehaviour {
     public GameObject parent;
+    public Texture2D[] dustCycle;
 
     private Vector3 targetPosition;
 
@@ -20,5 +21,9 @@ public class VFXBehavior : MonoBehaviour {
 
     public void DestroyParticle() {
         Destroy(gameObject);
+    }
+
+    public void SwitchFrame(int frame) {
+        GetComponent<MeshRenderer>().materials[0].SetTexture("_BaseMap", dustCycle[frame]);
     }
 }

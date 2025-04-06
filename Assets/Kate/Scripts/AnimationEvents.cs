@@ -11,6 +11,10 @@ public class AnimationEvents : MonoBehaviour {
     }
 
     public void SwitchFrame(int frame) {
-        character.GetComponent<CharacterAnimation>().AnimateRunCycle(gameObject.name, frame);
+        character.GetComponent<CharacterAnimation>().Animate(gameObject.name, frame);
+    }
+
+    public void EndBlinking() {
+        anim.SetBool("Blinking", false);
     }
 }
