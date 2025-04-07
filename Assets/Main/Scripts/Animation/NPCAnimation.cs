@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPCAnimations : MonoBehaviour {
+public class NPCAnimation : MonoBehaviour {
     // Cache PropertyId
     private static readonly int BaseMap = Shader.PropertyToID("_BaseMap");
     
