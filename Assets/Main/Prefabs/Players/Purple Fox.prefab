@@ -397,6 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
   isFollowing: 0
+  followSmoothing: 15
 --- !u!114 &5572322393851775695
 MonoBehaviour:
   m_ObjectHideFlags: 0

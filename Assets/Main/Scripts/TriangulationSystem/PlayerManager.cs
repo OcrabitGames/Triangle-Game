@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     private Transform _parentTransform;
     private bool _waitToSpawn;
     [SerializeField] private GameObject[] players = new GameObject[3];
-    private PlayerFollow[] _playerFollowScripts = new PlayerFollow[3];
+    private FoxFollow[] _playerFollowScripts = new FoxFollow[3];
     private GameObject _playerTrace;
     private Vector3 _traceOffset;
     
@@ -94,7 +94,7 @@ public class PlayerManager : MonoBehaviour
             // Update Scripts
             TriangulationManager.Instance.SetPlayer(player, _pendingPlayerNum);
             players[_pendingPlayerNum] = player;
-            _playerFollowScripts[_pendingPlayerNum] = player.GetComponent<PlayerFollow>();
+            _playerFollowScripts[_pendingPlayerNum] = player.GetComponent<FoxFollow>();
             
             // Set Movement
             activePlayerNum = _pendingPlayerNum;
