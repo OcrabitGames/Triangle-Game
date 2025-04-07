@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MenuChange : MonoBehaviour {
 
@@ -23,9 +24,16 @@ public class MenuChange : MonoBehaviour {
             highestUnlockedLevel = level + 1;
         }
     }
+    private IEnumerator WaitForSoundAndTransition(string sceneName){
+        AudioSource source = GetComponentInChildren<AudioSource>();
+        source.Play();
+        yield return new WaitForSeconds(source.clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
 
     public void goToGame(){
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+        StartCoroutine(WaitForSoundAndTransition("MarcosWorld"));
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MarcosWorld");
     }
     public void goToMenu(){
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
