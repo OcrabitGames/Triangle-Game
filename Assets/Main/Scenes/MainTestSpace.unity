@@ -1905,7 +1905,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 665882285}
-  - component: {fileID: 665882284}
   - component: {fileID: 665882286}
   m_Layer: 0
   m_Name: Group 1
@@ -1914,36 +1913,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &665882284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665882283}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842edb6b9382d407591ef8a8470dbf72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  neighborRadius: 3
-  separationDistance: 1
-  cohesionWeight: 1
-  alignmentWeight: 1
-  separationWeight: 1.5
-  wanderChance: 0.1
-  changeTargetIntervalMin: 3
-  changeTargetIntervalMax: 7
-  randomTargetRadius: 5
-  smoothFactor: 0.2
-  inertia: 0.9
-  useRandom: 0
-  targetPaths:
-  - {fileID: 1472728807}
-  - {fileID: 53326447}
-  - {fileID: 1814668739}
-  - {fileID: 992097528}
 --- !u!4 &665882285
 Transform:
   m_ObjectHideFlags: 0
@@ -1980,7 +1949,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpotsParent: {fileID: 618532320}
-  movementSpeed: 0
 --- !u!4 &679454471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 543022925023756640, guid: eded812698ccb4839a6b645e33d35d48, type: 3}
@@ -5300,7 +5268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1866388218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,7 +5276,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866388217}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 842edb6b9382d407591ef8a8470dbf72, type: 3}
   m_Name: 

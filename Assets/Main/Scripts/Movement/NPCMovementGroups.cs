@@ -1,161 +1,107 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class NPCMovementGroups : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float neighborRadius = 3f;
-    public float separationDistance = 1f;
-    public float cohesionWeight = 1.0f;
-    public float alignmentWeight = 1.0f;
-    public float separationWeight = 1.5f;
-    public float wanderChance = 0.1f;
-    public float changeTargetIntervalMin = 3f;
-    public float changeTargetIntervalMax = 7f;
-    public float randomTargetRadius = 10f;
-    public float smoothFactor = 0.2f;
-    public float inertia = 0.9f;
+    public GameObject movementSpotsParent;
 
-    private List<Rigidbody> groupMembers = new List<Rigidbody>();
-    private Dictionary<Rigidbody, Vector3> velocityCache = new Dictionary<Rigidbody, Vector3>();
-    private Dictionary<Rigidbody, NPCMovement> owlMovements = new Dictionary<Rigidbody, NPCMovement>();
-    private Vector3 groupTargetPosition;
-    private float targetTimer;
-    private Color groupColor;
-
-    public bool useRandom;
-    public Transform[] targetPaths;
-    private int currentTargetIndex;
-    private Transform target;
+    private Transform[] targetSpots;
+    private int[] currentTargetIndices;
+    private Transform[] children;
+    private NPCMovement[] npcMovements;
 
     void Start()
     {
-        foreach (Transform child in transform)
+        int targetCount = movementSpotsParent.transform.childCount;
+        targetSpots = new Transform[targetCount];
+        for (int i = 0; i < targetCount; i++)
         {
-            Rigidbody rb = child.GetComponent<Rigidbody>();
-            NPCMovement om = child.GetComponent<NPCMovement>();
-            
-            if (rb && om)
-            {
-                groupMembers.Add(rb);
-                rb.interpolation = RigidbodyInterpolation.Interpolate;
-                velocityCache[rb] = Vector3.zero;
-                owlMovements[rb] = om;
-            }
+            targetSpots[i] = movementSpotsParent.transform.GetChild(i);
         }
 
-        if (useRandom) SetRandomTarget();
-        else GetNextTarget();
-        
-        targetTimer = GetRandomTargetInterval();
+        int childCount = transform.childCount;
+        children = new Transform[childCount];
+        currentTargetIndices = new int[childCount];
+        npcMovements = new NPCMovement[childCount];
+
+        for (int i = 0; i < childCount; i++)
+        {
+            children[i] = transform.GetChild(i);
+            currentTargetIndices[i] = 0;
+            npcMovements[i] = children[i].GetComponent<NPCMovement>();
+        }
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        targetTimer -= Time.fixedDeltaTime;
-        if (targetTimer <= 0)
+        for (int i = 0; i < children.Length; i++)
         {
-            if (useRandom) SetRandomTarget();
-            else GetNextTarget();
-            targetTimer = GetRandomTargetInterval();
-        }
+            Transform npc = children[i];
+            Transform target = targetSpots[currentTargetIndices[i]];
 
-        foreach (Rigidbody rb in groupMembers)
-        {
-            Vector3 moveDirection = (Random.value < wanderChance)
-                ? Random.insideUnitSphere.normalized
-                : CalculateFlockingDirection(rb);
+            Vector3 delta = target.position - npc.position;
+            delta.y = 0f;
 
-            moveDirection.y = 0f;
-
-            Vector3 toTarget = (groupTargetPosition - rb.position).normalized;
-            moveDirection = Vector3.Lerp(moveDirection, toTarget, smoothFactor);
-            moveDirection = moveDirection.normalized;
-
-            Vector3 previousVelocity = velocityCache[rb];
-            Vector3 smoothedVelocity = Vector3.Lerp(previousVelocity, moveDirection * moveSpeed, 1f - inertia);
-            velocityCache[rb] = smoothedVelocity;
-
-            if (owlMovements.TryGetValue(rb, out NPCMovement owl))
+            if (delta.magnitude < 0.2f)
             {
-                Vector3 targetPoint = rb.position + smoothedVelocity;
-                owl.MoveToward(targetPoint);
+                currentTargetIndices[i] = (currentTargetIndices[i] + 1) % targetSpots.Length;
+            }
+            else
+            {
+                Vector3 targetDir = delta.normalized;
+                Vector3 flockingDir = GetFlockingDirection(i);
+
+                // Blend flocking and target direction
+                Vector3 finalDirection = (targetDir + flockingDir).normalized;
+
+                npcMovements[i].MoveDirection(finalDirection);
             }
         }
     }
 
-    private void SetRandomTarget()
+    Vector3 GetFlockingDirection(int index)
     {
-        groupTargetPosition = transform.position + new Vector3(
-            Random.Range(-randomTargetRadius, randomTargetRadius),
-            0,
-            Random.Range(-randomTargetRadius, randomTargetRadius)
-        );
-
-        // AssignGroupColor();
-    }
-
-    private void GetNextTarget()
-    {
-        if (currentTargetIndex < targetPaths.Length - 1) { currentTargetIndex++; }
-        else currentTargetIndex = 0;
-        target = targetPaths[currentTargetIndex];
-        groupTargetPosition = new Vector3(target.position.x, 0f, target.position.z);
-    }
-
-    private float GetRandomTargetInterval()
-    {
-        return Random.Range(changeTargetIntervalMin, changeTargetIntervalMax);
-    }
-
-    private Vector3 CalculateFlockingDirection(Rigidbody rb)
-    {
+        Transform owl = children[index];
         Vector3 alignment = Vector3.zero;
         Vector3 cohesion = Vector3.zero;
         Vector3 separation = Vector3.zero;
+
         int neighborCount = 0;
+        float neighborRadius = 5f;
+        float separationDistance = 2f;
 
-        foreach (Rigidbody other in groupMembers)
+        for (int i = 0; i < children.Length; i++)
         {
-            if (rb == other) continue;
+            if (i == index) continue;
 
-            Vector3 toOther = other.position - rb.position;
-            float distance = toOther.magnitude;
-
+            Transform other = children[i];
+            float distance = Vector3.Distance(owl.position, other.position);
             if (distance < neighborRadius)
             {
-                alignment += other.linearVelocity;
+                neighborCount++;
+
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+                if (rb != null)
+                    alignment += rb.linearVelocity;
+
                 cohesion += other.position;
 
                 if (distance < separationDistance)
-                {
-                    separation -= toOther.normalized / distance;
-                }
-
-                neighborCount++;
+                    separation += (owl.position - other.position) / distance;
             }
         }
 
+        Vector3 direction = Vector3.zero;
         if (neighborCount > 0)
         {
-            alignment = (alignment / neighborCount).normalized * alignmentWeight;
-            cohesion = ((cohesion / neighborCount) - rb.position).normalized * cohesionWeight;
-            separation = separation.normalized * separationWeight;
+            alignment /= neighborCount;
+            cohesion = (cohesion / neighborCount - owl.position).normalized;
+            separation /= neighborCount;
+
+            direction = alignment.normalized + cohesion + separation;
+            direction.Normalize();
         }
 
-        return (alignment + cohesion + separation).normalized;
+        return direction;
     }
 
-    // private void AssignGroupColor()
-    // {
-    //     groupColor = new Color(Random.value, Random.value, Random.value);
-    //     foreach (Rigidbody rb in groupMembers)
-    //     {
-    //         Renderer renderer = rb.GetComponent<Renderer>();
-    //         if (renderer != null)
-    //         {
-    //             renderer.material.color = groupColor;
-    //         }
-    //     }
-    // }
 }
