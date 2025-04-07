@@ -10,14 +10,15 @@ public class LineCube : MonoBehaviour
     public float rotationSpeed = 30f;
 
     // Initialize the cube between two points
-    public void Initialize(Vector3 start, Vector3 end)
+    public void Initialize(Vector3 start, Vector3 end, bool first=false)
     {
         gameObject.SetActive(true);
         pointA = start;
         pointB = end;
         isActive = true;
         isRotating = true;
-
+        
+        if (first) return;
         UpdateTransform();
     }
 

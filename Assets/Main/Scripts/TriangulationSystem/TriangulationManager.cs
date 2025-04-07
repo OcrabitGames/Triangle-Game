@@ -72,19 +72,19 @@ public class TriangulationManager : MonoBehaviour
             CalculateDistance();
             if (player1 && player1.transform.position != _cachedPlayer1Pos)
             {
-                print($"Logging Player 1 {player1.transform.position}");
+                //print($"Logging Player 1 {player1.transform.position}");
                 _cachedPlayer1Pos = player1.transform.position;
                 DrawConnection(_connect12, _connect13, player1, player2, player3, ref _line12, ref _line13);
             }
             if (player2 && player2.transform.position != _cachedPlayer2Pos)
             {
-                print($"Logging Player 2 {player2.transform.position}");
+                //print($"Logging Player 2 {player2.transform.position}");
                 _cachedPlayer2Pos = player2.transform.position;
                 DrawConnection(_connect12, _connect23, player2, player1, player3, ref _line12, ref _line23);
             }
             if (player3 && player3.transform.position != _cachedPlayer3Pos)
             {                
-                print($"Logging Player 3 {player3.transform.position}");
+                //print($"Logging Player 3 {player3.transform.position}");
                 _cachedPlayer3Pos = player3.transform.position;
                 DrawConnection(_connect13, _connect23, player3, player1, player2, ref _line13, ref _line23);
             }
@@ -200,7 +200,8 @@ public class TriangulationManager : MonoBehaviour
     {
         var lineObj = Instantiate(linePrefab);
         var lineScript = lineObj.GetComponent<LineCube>();
-        lineScript.Initialize(start, end);
+        lineScript.Initialize(start, end, true);
+        lineObj.SetActive(false);
         return lineScript;
     }
 

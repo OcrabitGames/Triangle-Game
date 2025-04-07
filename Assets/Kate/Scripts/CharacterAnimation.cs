@@ -5,14 +5,16 @@ public class CharacterAnimation : MonoBehaviour {
     public GameObject dustVFX;
     public string type;
 
-    private GameObject textureManager;
-    private Texture2D[] runCycle, outlineRunCycle, blinkCycle;
+    private TextureManager textureManager;
+    [SerializeField] private Texture2D[] runCycle, outlineRunCycle, blinkCycle;
     private float dustTimer, blinkTimer, blinkTimerThreshold;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         // Initialize variables
-        textureManager = GameObject.FindGameObjectWithTag("Texture Manager");
+        textureManager = TextureManager.Instance;
+            //= GameObject.FindGameObjectWithTag("Texture Manager");
         runCycle = new Texture2D[9];
         outlineRunCycle = new Texture2D[9];
         blinkCycle = new Texture2D[5];
@@ -22,24 +24,24 @@ public class CharacterAnimation : MonoBehaviour {
 
         // Set the type of character and get necessary textures
         if (type == "Owl") {
-            runCycle = textureManager.GetComponent<TextureManager>().owlRunCycle;
-            blinkCycle = textureManager.GetComponent<TextureManager>().owlBlinkCycle;
+            runCycle = textureManager.owlRunCycle;
+            blinkCycle = textureManager.owlBlinkCycle;
         }
         else if (type == "Purple Fox") {
-            runCycle = textureManager.GetComponent<TextureManager>().purpleFoxRunCycle;
-            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
+            runCycle = textureManager.purpleFoxRunCycle;
+            blinkCycle = textureManager.foxBlinkCycle;
         }
         else if (type == "Pink Fox") {
-            runCycle = textureManager.GetComponent<TextureManager>().pinkFoxRunCycle;
-            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
+            runCycle = textureManager.pinkFoxRunCycle;
+            blinkCycle = textureManager.foxBlinkCycle;
         }
         else if (type == "Blue Fox") {
-            runCycle = textureManager.GetComponent<TextureManager>().blueFoxRunCycle;
-            blinkCycle = textureManager.GetComponent<TextureManager>().foxBlinkCycle;
+            runCycle = textureManager.blueFoxRunCycle;
+            blinkCycle = textureManager.foxBlinkCycle;
         }
 
         // Set character outline
-        outlineRunCycle = textureManager.GetComponent<TextureManager>().outlineRunCycle;
+        outlineRunCycle = textureManager.outlineRunCycle;
         body.transform.GetChild(0).GetComponent<Animator>().SetBool("Outline", true);
     }
 

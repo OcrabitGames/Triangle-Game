@@ -1360,112 +1360,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4140543812303222020, guid: a92a1765f4b9545099af8b1350c63b06, type: 3}
   m_PrefabInstance: {fileID: 6837093020333200723}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2062289800
-GameObject:
+--- !u!1001 &2716499267825330918
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2062289802}
-  - component: {fileID: 2062289801}
-  m_Layer: 0
-  m_Name: Texture Manager
-  m_TagString: Texture Manager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2062289801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062289800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5920600b17708414fa02f487585709e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineRunCycle:
-  - {fileID: 2800000, guid: 30b8326f7f26f491dafc182a1f125d38, type: 3}
-  - {fileID: 2800000, guid: e4ef6fe66990943aba4aab82e9e08faa, type: 3}
-  - {fileID: 2800000, guid: 865d245d05106437dbfd21c1b76a45b0, type: 3}
-  - {fileID: 2800000, guid: bb95e0566076045f2a651043f5f782f3, type: 3}
-  - {fileID: 2800000, guid: 59e0207b813cd47d88be16ddf456657c, type: 3}
-  - {fileID: 2800000, guid: c75f52ea31441492f9c3d456ed7ceee6, type: 3}
-  - {fileID: 2800000, guid: 69a2f3ee5f00e4e48a19b38b2100c5a1, type: 3}
-  - {fileID: 2800000, guid: 881524005aa624aa193f341135f74478, type: 3}
-  - {fileID: 2800000, guid: 291fd829f6eb44824a8a4c8fa65ec58b, type: 3}
-  purpleFoxRunCycle:
-  - {fileID: 2800000, guid: 286d4fb7606c24e3082144167f672494, type: 3}
-  - {fileID: 2800000, guid: e4cfcc0c30383450999a252e8f4e13f4, type: 3}
-  - {fileID: 2800000, guid: 3f0e962be6c3e4f06a069118168410a7, type: 3}
-  - {fileID: 2800000, guid: 4d179f94c62864fa4a5726a70dcd891e, type: 3}
-  - {fileID: 2800000, guid: 623fcc008d1154cb29ab7fb4c23b1c01, type: 3}
-  - {fileID: 2800000, guid: 62c856a35c66945ac94f509deb1d9683, type: 3}
-  - {fileID: 2800000, guid: 119cff7c993104c9eae02e299076e42a, type: 3}
-  - {fileID: 2800000, guid: 1f14d9e1adbfc474ba85f0da6d0bf375, type: 3}
-  - {fileID: 2800000, guid: d37c6ea44ca6440139d6c1bc7b7acf00, type: 3}
-  pinkFoxRunCycle:
-  - {fileID: 2800000, guid: 5a7fefd7a7b894168be7c1a6472797e7, type: 3}
-  - {fileID: 2800000, guid: bb45affc21e0840daab5c0e781f3ef41, type: 3}
-  - {fileID: 2800000, guid: b93f815f47ad3485c9c7d48cbe8521a4, type: 3}
-  - {fileID: 2800000, guid: ab641c62c24b44211b1647f743f958e7, type: 3}
-  - {fileID: 2800000, guid: 96ea29b4bdeb64f3f9d5c6359d087b10, type: 3}
-  - {fileID: 2800000, guid: 643a12ba81a8e4d479589e7a0d58258d, type: 3}
-  - {fileID: 2800000, guid: a9bf6b3c8845247a89b48b2713537b13, type: 3}
-  - {fileID: 2800000, guid: 6667ba162b14f4139ad216b4cc515d6f, type: 3}
-  - {fileID: 2800000, guid: 8df82a90f7ef24cefa508e4e9e22b2df, type: 3}
-  blueFoxRunCycle:
-  - {fileID: 2800000, guid: bd2e7f533586d41c6a48b2017ebf61dd, type: 3}
-  - {fileID: 2800000, guid: 686c1f4fe0adc4c15aab9965989352e4, type: 3}
-  - {fileID: 2800000, guid: 3515afaf1d65f4038a075b31ee76860a, type: 3}
-  - {fileID: 2800000, guid: e14d3a9f8443b4a5eb946e1f5f689090, type: 3}
-  - {fileID: 2800000, guid: 6e8deb500e1a549c987fa22d22fdc1e2, type: 3}
-  - {fileID: 2800000, guid: 8660b7b0761514c0896022f541b284ff, type: 3}
-  - {fileID: 2800000, guid: 57f063983a1ee4b4e8245b1526463f0b, type: 3}
-  - {fileID: 2800000, guid: 1cd3c029879aa4e52988f9466fd29496, type: 3}
-  - {fileID: 2800000, guid: b7b90ed37b7a5487bab0ea6ed60e82f2, type: 3}
-  foxBlinkCycle:
-  - {fileID: 2800000, guid: f94e32d28416d484ea182f98a6455105, type: 3}
-  - {fileID: 2800000, guid: 752b87aad950d43a1ac20c1da546f6f8, type: 3}
-  - {fileID: 2800000, guid: bc3b95e1057444cd5a808fa8fd951bb8, type: 3}
-  - {fileID: 2800000, guid: 91a167782ca324a04a74c47411575715, type: 3}
-  - {fileID: 2800000, guid: 27785ab1ed8ce44b2a667ae22bcfa0e4, type: 3}
-  owlRunCycle:
-  - {fileID: 2800000, guid: 31ff1c83ae2f44f6f9a9352b4452c09d, type: 3}
-  - {fileID: 2800000, guid: 9cc0ba1e70f4d409b9d9da25416beb26, type: 3}
-  - {fileID: 2800000, guid: 2fca39dc76e134075a9668d218163570, type: 3}
-  - {fileID: 2800000, guid: cbbdd7e78d659434ea7fddb8a6557a49, type: 3}
-  - {fileID: 2800000, guid: 6d0f589bcbcaa4bc3a63c930322cbbff, type: 3}
-  - {fileID: 2800000, guid: dad31e7fd60554224ba6daf831b983d0, type: 3}
-  - {fileID: 2800000, guid: 7690b71b707b147efa5c2b2264baef39, type: 3}
-  - {fileID: 2800000, guid: 91ec6a8a829f34f82ba328173c7b53e2, type: 3}
-  - {fileID: 2800000, guid: 21364f1f36d844ccc8df36a98b9597c4, type: 3}
-  owlBlinkCycle:
-  - {fileID: 2800000, guid: b6f4d9a3ae56e4f4cb74cb18b4c6194e, type: 3}
-  - {fileID: 2800000, guid: 0e5941b608b63420cbacc7a1e2d9f0ec, type: 3}
-  - {fileID: 2800000, guid: bc1f0203a3a684e9f93dfbcff124d4f7, type: 3}
-  - {fileID: 2800000, guid: c8dc8459445d94ddda6c8dbdffb86967, type: 3}
-  - {fileID: 2800000, guid: b1b27596ee5844975af68264a5c0e9bc, type: 3}
---- !u!4 &2062289802
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062289800}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 502199724989309086, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193622171848633275, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: m_Name
+      value: Texture Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
 --- !u!1001 &6690923851489741000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1598,7 +1549,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 410262814}
   - {fileID: 659486041}
-  - {fileID: 2062289802}
+  - {fileID: 2716499267825330918}
   - {fileID: 848299339}
   - {fileID: 6837093020333200723}
   - {fileID: 492477095}

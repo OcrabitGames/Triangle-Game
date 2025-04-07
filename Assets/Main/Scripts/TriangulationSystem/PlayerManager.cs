@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    public GameObject playerTracePrefab;
+    public GameObject[] playerPrefabs;
+    public GameObject[] playerTracePrefabs;
     public String parentName;
     
     private Camera _camera;
@@ -60,7 +60,7 @@ public class PlayerManager : MonoBehaviour
 
     private void SpawnTransparentTrace()
     {
-        _playerTrace = Instantiate(playerTracePrefab, transform.position, Quaternion.identity);
+        _playerTrace = Instantiate(playerTracePrefabs[_pendingPlayerNum], transform.position, Quaternion.identity);
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -87,7 +87,7 @@ public class PlayerManager : MonoBehaviour
             Vector3 spawnPosition = _playerTrace ? _playerTrace.transform.position : transform.position;
             
             // Spawn and Set Hierarchy
-            GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+            GameObject player = Instantiate(playerPrefabs[_pendingPlayerNum], spawnPosition, Quaternion.identity);
             player.name = "Player" + _pendingPlayerNum;
             player.transform.SetParent(_parentTransform);
             
@@ -111,6 +111,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void HandleMovement()
     {
         if (activePlayerNum == -1) return;
@@ -125,14 +126,17 @@ public class PlayerManager : MonoBehaviour
             return;
         }
         _playerFollowScripts[activePlayerNum].StopFollowing();
-
-        float moveSpeed = 5f;
+        
         Vector3 direction = Vector3.zero;
-
         if (Input.GetKey(KeyCode.W)) direction += Vector3.forward;
         if (Input.GetKey(KeyCode.S)) direction += Vector3.back;
         if (Input.GetKey(KeyCode.A)) direction += Vector3.left;
         if (Input.GetKey(KeyCode.D)) direction += Vector3.right;
-        activePlayer.transform.Translate(direction * (moveSpeed * Time.deltaTime), Space.World);
+        
+        FoxMovement fm = activePlayer.GetComponent<FoxMovement>();
+        if (fm)
+        {
+            fm.MoveDirection(direction);
+        }
     }
 }
