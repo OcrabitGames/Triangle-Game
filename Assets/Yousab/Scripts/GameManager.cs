@@ -13,14 +13,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void SetLevel(int level)
-    {
+    public void SetLevel(int level){
         selectedLevel = level;
         Debug.Log("Level " + selectedLevel);
     }
 
-    public void CompleteLevel(int level)
-{
+    public void CompleteLevel(int level){
     if (level >= highestUnlockedLevel)
     {
         highestUnlockedLevel = level + 1;
