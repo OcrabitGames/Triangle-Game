@@ -11,20 +11,19 @@ public class AnimationEvents : MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake() {
         anim = GetComponent<Animator>();
-        character = GetOwlParent(gameObject);
-        if (isFox)
-        {
+        character = GetParent(gameObject);
+        if (isFox) {
             foxAnimation = character.GetComponent<FoxAnimation>();
         } else {
             npcAnimations = character.GetComponent<NPCAnimation>();
         }
     }
 
-    GameObject GetOwlParent(GameObject obj)
+    GameObject GetParent(GameObject obj)
     {
         var parent = obj.transform.parent;
         if (parent.name.Contains(parentName)) { return parent.gameObject; } 
-        else { return GetOwlParent(parent.gameObject); }
+        else { return GetParent(parent.gameObject); }
     }
 
     public void SwitchFrame(int frame) {
