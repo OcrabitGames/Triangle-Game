@@ -284,7 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xVel: 0
   zVel: 0
-  movementSpeed: 2
+  movementSpeed: 1
   speedLimit: 0.2
   friction: 0.1
 --- !u!114 &5116787785896289521
