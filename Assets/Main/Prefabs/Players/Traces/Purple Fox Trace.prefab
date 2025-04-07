@@ -900,8 +900,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4772517164459690467}
-  - component: {fileID: 4750531067096391942}
-  - component: {fileID: 1514960418299340587}
+  - component: {fileID: 4900299696347670963}
+  - component: {fileID: 6223084427351905719}
   - component: {fileID: 7418066006900030130}
   - component: {fileID: 3011798257998864291}
   - component: {fileID: 266545150290704136}
@@ -933,7 +933,7 @@ Transform:
   - {fileID: 5206410183622035414}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4750531067096391942
+--- !u!114 &4900299696347670963
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -942,19 +942,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8898901825617548238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: befe77210a775415689395c31732e824, type: 3}
+  m_Script: {fileID: 11500000, guid: e3694a9b93cc5344fb58678d4347fc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 5069703808366700754}
   eyes: {fileID: 5556096450187844966}
   body: {fileID: 3469250116602876591}
   tail: {fileID: 1611576426833390511}
-  dustVFX: {fileID: 6956659238524157320, guid: 195543a799bb64c1f8a3ee6a81c0b57c, type: 3}
+  dustVFX: {fileID: 6956659238524157320, guid: c45a4c9870ab25f479b65bed943961e4, type: 3}
   type: Purple Fox
   runCycle: []
   outlineRunCycle: []
   blinkCycle: []
---- !u!114 &1514960418299340587
+--- !u!114 &6223084427351905719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -963,14 +963,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8898901825617548238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ff9a8343b6d1463293cad107485da1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f8e0a62a54c15848b4dcf2ec28ebdc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   xVel: 0
   zVel: 0
-  movementSpeed: 0.5
-  speedLimit: 0.15
-  friction: 0.7
+  movementSpeed: 0
+  speedLimit: 0
+  friction: 0
 --- !u!114 &7418066006900030130
 MonoBehaviour:
   m_ObjectHideFlags: 0
