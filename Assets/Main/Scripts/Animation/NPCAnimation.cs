@@ -58,6 +58,10 @@ public class NPCAnimations : MonoBehaviour {
             runCycle = _textureManager.owlRunCycle;
             blinkCycle = _textureManager.owlBlinkCycle;
         }
+        else if (type == "Deer") {
+            runCycle = _textureManager.deerRunCycle;
+            blinkCycle = _textureManager.deerBlinkCycle;
+        }
 
         // Set character outline
         outlineRunCycle = _textureManager.outlineRunCycle;

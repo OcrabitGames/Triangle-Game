@@ -13,6 +13,9 @@ public class TextureManager : MonoBehaviour {
 
     public Texture2D[] owlRunCycle;
     public Texture2D[] owlBlinkCycle;
+
+    public Texture2D[] deerRunCycle;
+    public Texture2D[] deerBlinkCycle;
     
     private void Awake() {
         if (Instance == null) {
