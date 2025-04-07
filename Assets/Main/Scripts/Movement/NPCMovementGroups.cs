@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class PersonTestMovement2 : MonoBehaviour
+public class NPCMovementGroups : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public float neighborRadius = 3f;
@@ -18,24 +18,35 @@ public class PersonTestMovement2 : MonoBehaviour
 
     private List<Rigidbody> groupMembers = new List<Rigidbody>();
     private Dictionary<Rigidbody, Vector3> velocityCache = new Dictionary<Rigidbody, Vector3>();
+    private Dictionary<Rigidbody, NPCMovement> owlMovements = new Dictionary<Rigidbody, NPCMovement>();
     private Vector3 groupTargetPosition;
     private float targetTimer;
     private Color groupColor;
+
+    public bool useRandom;
+    public Transform[] targetPaths;
+    private int currentTargetIndex;
+    private Transform target;
 
     void Start()
     {
         foreach (Transform child in transform)
         {
             Rigidbody rb = child.GetComponent<Rigidbody>();
-            if (rb != null)
+            NPCMovement om = child.GetComponent<NPCMovement>();
+            
+            if (rb && om)
             {
                 groupMembers.Add(rb);
                 rb.interpolation = RigidbodyInterpolation.Interpolate;
                 velocityCache[rb] = Vector3.zero;
+                owlMovements[rb] = om;
             }
         }
 
-        SetRandomTarget();
+        if (useRandom) SetRandomTarget();
+        else GetNextTarget();
+        
         targetTimer = GetRandomTargetInterval();
     }
 
@@ -44,7 +55,8 @@ public class PersonTestMovement2 : MonoBehaviour
         targetTimer -= Time.fixedDeltaTime;
         if (targetTimer <= 0)
         {
-            SetRandomTarget();
+            if (useRandom) SetRandomTarget();
+            else GetNextTarget();
             targetTimer = GetRandomTargetInterval();
         }
 
@@ -64,7 +76,11 @@ public class PersonTestMovement2 : MonoBehaviour
             Vector3 smoothedVelocity = Vector3.Lerp(previousVelocity, moveDirection * moveSpeed, 1f - inertia);
             velocityCache[rb] = smoothedVelocity;
 
-            rb.linearVelocity = smoothedVelocity;
+            if (owlMovements.TryGetValue(rb, out NPCMovement owl))
+            {
+                Vector3 targetPoint = rb.position + smoothedVelocity;
+                owl.MoveToward(targetPoint);
+            }
         }
     }
 
@@ -77,6 +93,14 @@ public class PersonTestMovement2 : MonoBehaviour
         );
 
         // AssignGroupColor();
+    }
+
+    private void GetNextTarget()
+    {
+        if (currentTargetIndex < targetPaths.Length - 1) { currentTargetIndex++; }
+        else currentTargetIndex = 0;
+        target = targetPaths[currentTargetIndex];
+        groupTargetPosition = new Vector3(target.position.x, 0f, target.position.z);
     }
 
     private float GetRandomTargetInterval()

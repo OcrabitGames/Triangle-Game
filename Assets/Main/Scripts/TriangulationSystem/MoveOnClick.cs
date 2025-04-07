@@ -5,13 +5,13 @@ public class MoveOnClick : MonoBehaviour
     private Camera mainCamera;
     private bool isDragging = false;
     private Vector3 offset;
-    private PlayerFollow _followScript;
+    private FoxFollow _followScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCamera = Camera.main;
-        _followScript = gameObject.GetComponent<PlayerFollow>();
+        _followScript = gameObject.GetComponent<FoxFollow>();
         
     }
 

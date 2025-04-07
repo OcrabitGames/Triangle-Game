@@ -21,8 +21,10 @@ public class FoxMovement : MonoBehaviour
     }
 
     // This method is now called externally to update movement based on input.
-    public void MoveDirection(Vector3 input)
+    public void MoveDirection(Vector3 input, float speed = -1f)
     {
+        if (speed != -1f) movementSpeed = speed;
+        
         // Horizontal movement
         if (input.x < 0)
         {
@@ -58,6 +60,12 @@ public class FoxMovement : MonoBehaviour
             zVel *= friction * (1f - Time.deltaTime);
             if (Mathf.Abs(zVel) <= 0.01f) zVel = 0f;
         }
+    }
+    
+    public void MoveToward(Vector3 targetPosition)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        MoveDirection(new Vector3(direction.x, 0f, direction.z), 1f);
     }
 
     // Physics.

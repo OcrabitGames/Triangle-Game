@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NPCMovement : MonoBehaviour {
+public class NPCMovementOld : MonoBehaviour {
     public float xVel, zVel;
     public float movementSpeed;
     public float speedLimit;
