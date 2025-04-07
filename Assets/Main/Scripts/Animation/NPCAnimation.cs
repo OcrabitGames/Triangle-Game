@@ -63,6 +63,15 @@ public class NPCAnimation : MonoBehaviour {
             blinkCycle = _textureManager.deerBlinkCycle;
         }
 
+        if (gameObject.CompareTag("Enemy")) {
+            if (type == "Owl") {
+                blinkCycle = _textureManager.enemyOwlBlinkCycle;
+            }
+            else {
+                blinkCycle = _textureManager.enemyDefaultBlinkCycle;
+            }
+        }
+
         // Set character outline
         outlineRunCycle = _textureManager.outlineRunCycle;
         _bodyOutlineAnimator.SetBool("Outline", true);
