@@ -23,6 +23,9 @@ public class PlayerManager : MonoBehaviour
     private int _pendingPlayerNum;
     public float groundLevel;
     private TriangulationManager _triangulationManager;
+
+    private GameObject soundManager;
+    public AudioClip placeSound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +36,8 @@ public class PlayerManager : MonoBehaviour
         
         GameObject emptyObj = new GameObject(parentName);
         _parentTransform = Instantiate(emptyObj, transform.position, Quaternion.identity).transform;
+
+        soundManager = GameObject.FindGameObjectWithTag("Sound FX Manager");
     }
 
     // Update is called once per frame
@@ -83,6 +88,9 @@ public class PlayerManager : MonoBehaviour
         // If clicked to Spawn Player
         if (Input.GetMouseButtonDown(0))
         {
+            // Play sound
+            soundManager.GetComponent<SoundFXManager>().PlaySound(placeSound);
+
             // Get Trace Position
             Vector3 spawnPosition = _playerTrace ? _playerTrace.transform.position : transform.position;
             

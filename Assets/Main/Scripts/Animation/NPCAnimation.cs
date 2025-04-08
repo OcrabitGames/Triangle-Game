@@ -7,6 +7,7 @@ public class NPCAnimation : MonoBehaviour {
     public GameObject head, eyes, body, tail;
     public GameObject dustVFX;
     public string type;
+    public float trailY;
     
     // Reference Vars
     private TextureManager _textureManager;
@@ -115,7 +116,7 @@ public class NPCAnimation : MonoBehaviour {
         // Dust VFX
         dustTimer -= Time.deltaTime;
         if (dustTimer <= 0f && (_npcMovement.xVel != 0f || _npcMovement.zVel != 0f)) {
-            GameObject dust = Instantiate(dustVFX, new Vector3(transform.position.x, 0.78f, transform.position.z), Quaternion.identity);
+            GameObject dust = Instantiate(dustVFX, new Vector3(transform.position.x, trailY, transform.position.z), Quaternion.identity);
             dust.GetComponent<VFXBehavior>().parent = gameObject;
             dustTimer = 0.25f;
         }

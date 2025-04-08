@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 0
+  parentName: Owl
 --- !u!1 &755697832354122318
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +268,7 @@ MonoBehaviour:
   tail: {fileID: 4112876484649391141}
   dustVFX: {fileID: 6956659238524157320, guid: 195543a799bb64c1f8a3ee6a81c0b57c, type: 3}
   type: Owl
+  trailY: 0.186
   runCycle: []
   outlineRunCycle: []
   blinkCycle: []
@@ -471,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 0
+  parentName: Owl
 --- !u!1 &3979316779868169345
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 0
+  parentName: Owl
 --- !u!1 &5043777084208080128
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 0
+  parentName: Owl
 --- !u!1 &5654663597635806958
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 0
+  parentName: Owl
 --- !u!1 &7417093098835989456
 GameObject:
   m_ObjectHideFlags: 0

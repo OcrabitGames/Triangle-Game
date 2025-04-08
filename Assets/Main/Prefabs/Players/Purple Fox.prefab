@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 0}
 --- !u!1 &1502324854789504178
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 0}
 --- !u!1 &3162077850183941135
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +312,7 @@ MonoBehaviour:
   tail: {fileID: 4528796274769899039}
   dustVFX: {fileID: 6956659238524157320, guid: 195543a799bb64c1f8a3ee6a81c0b57c, type: 3}
   type: Purple Fox
+  trailY: 0.186
   runCycle: []
   outlineRunCycle: []
   blinkCycle: []
@@ -627,6 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 0}
 --- !u!1 &5996537441510139281
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 0}
 --- !u!1 &8226196585518594746
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 8300000, guid: 30a390905b81949b998cc5586c4f56f3, type: 3}
 --- !u!1 &8800627916815157693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,3 +1069,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFox: 1
   parentName: Fox
+  stepSound: {fileID: 0}
