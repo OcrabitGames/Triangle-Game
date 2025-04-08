@@ -22,6 +22,9 @@ public class FoxFollow : MonoBehaviour
         {
             _foxMovement.MoveToward(enemy.transform.position + offset);
         }
+        if (enemy == null) {
+            _foxMovement.StopMovement();
+        }
     }
 
     public void Initialize(GameObject enemyObj)
