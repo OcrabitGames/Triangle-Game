@@ -3,6 +3,8 @@ using UnityEngine;
 public class NPCMovementGroups : MonoBehaviour
 {
     public GameObject movementSpotsParent;
+    public float deltaDistance = 0.2f;
+    public float neighborRadius = 5f;
 
     private Transform[] targetSpots;
     private int[] currentTargetIndices;
@@ -41,7 +43,7 @@ public class NPCMovementGroups : MonoBehaviour
             Vector3 delta = target.position - npc.position;
             delta.y = 0f;
 
-            if (delta.magnitude < 0.2f)
+            if (delta.magnitude < deltaDistance)
             {
                 currentTargetIndices[i] = (currentTargetIndices[i] + 1) % targetSpots.Length;
             }
@@ -66,7 +68,6 @@ public class NPCMovementGroups : MonoBehaviour
         Vector3 separation = Vector3.zero;
 
         int neighborCount = 0;
-        float neighborRadius = 5f;
         float separationDistance = 2f;
 
         for (int i = 0; i < children.Length; i++)
@@ -80,7 +81,7 @@ public class NPCMovementGroups : MonoBehaviour
                 neighborCount++;
 
                 Rigidbody rb = other.GetComponent<Rigidbody>();
-                if (rb != null)
+                if (rb)
                     alignment += rb.linearVelocity;
 
                 cohesion += other.position;
