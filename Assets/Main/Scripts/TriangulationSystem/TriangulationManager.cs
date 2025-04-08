@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
 public class TriangulationManager : MonoBehaviour
 {
     // an Instance that doesn't get destroyed so this works on all scenes
     public static TriangulationManager Instance { get; private set; }
+    
+    // Script Ref
+    [NonSerialized] public SoundFXManager soundFXManager;
+    [NonSerialized] public LevelManager levelManager;
     
     // Script Activity Management
     public bool gameActive;
@@ -43,12 +48,29 @@ public class TriangulationManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
+            
+            // Reset
+            Start();
         }
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Make sure vals are false at start
+        // Reset Vals
+        player1 = null;
+        player2 = null;
+        player3 = null;
+        _connect12 = false;
+        _connect23 = false;
+        _connect13 = false;
+        _allConnected = false;
+        _line12 = null;
+        _line23 = null;
+        _line13 = null;
+        _triangularPlane = null;
+        
         // Set TriangularPlane Up
         _triangularPlane = Instantiate(triangularPlanePrefab).GetComponent<TriangularPlane>();
         _triangularPlane.Initialize(timeRequired, this);
@@ -60,6 +82,10 @@ public class TriangulationManager : MonoBehaviour
         
         // Set Draw Mode Active
         SetDrawing(true);
+        
+        // Script Ref
+        soundFXManager = SoundFXManager.Instance;
+        levelManager = LevelManager.Instance;
     }
 
     // Update is called once per frame

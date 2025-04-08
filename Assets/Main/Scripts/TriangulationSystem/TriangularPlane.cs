@@ -12,7 +12,7 @@ public class TriangularPlane : MonoBehaviour
     
     public float thickness = 0.05f;
     
-    private TriangulationManager _triangulationManagerReference;
+    private TriangulationManager _triangulationManager;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class TriangularPlane : MonoBehaviour
     {
         _timeRequired = timeRequired;
         _curTimeRequired = timeRequired;
-        _triangulationManagerReference = reference;
+        _triangulationManager = reference;
     }
 
     public void UpdateTriangle(Vector3 pointA, Vector3 pointB, Vector3 pointC)
@@ -50,6 +50,8 @@ public class TriangularPlane : MonoBehaviour
         {
             if (_curTimeRequired <= 0f)
             {
+                _triangulationManager.soundFXManager.FinishCapture();
+                _triangulationManager.levelManager.CompleteLevel();
                 Destroy(other.gameObject);
                 print("Captured Enemy!");
                 // Eventually maybe do something with _triangulationManagerReference
@@ -64,6 +66,15 @@ public class TriangularPlane : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             _curTimeRequired = _timeRequired;
+            _triangulationManager.soundFXManager.StopCapture();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            _triangulationManager.soundFXManager.StopCapture();
         }
     }
     

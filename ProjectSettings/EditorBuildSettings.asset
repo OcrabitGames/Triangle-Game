@@ -6,32 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Main/Scenes/MenuScreen.unity
+    guid: 945df667c37ec4d7f829b7b8e553457b
   - enabled: 1
-    path: Assets/Scenes/YousabsWorkspace.unity
-    guid: 7052492dab394422eb16e54d7e48b130
+    path: Assets/Main/Scenes/LevelSelect.unity
+    guid: 69a5b8281537f4d86912dcca2199b17c
   - enabled: 1
-    path: Assets/Scenes/TinaScene.unity
-    guid: a890a0007e974fe4c9299d9e6a1dd87d
+    path: Assets/Main/Scenes/Level1.unity
+    guid: 5c3a901af1562b64081a7b376e763c3f
   - enabled: 1
-    path: Assets/Scenes/MarcosWorkspace.unity
-    guid: 5cddce81786834df19be2b15852f7378
+    path: Assets/Main/Scenes/Level2.unity
+    guid: 1b81877d98df54ca98992dfc03db7c0b
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: 81df4805458a7ad4fa4e49af3f413d00
+    path: Assets/Main/Scenes/Level3.unity
+    guid: 34c22e28949d03f47a424dec633a99ff
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 76b49a4f34d1c0947ae9c9ae17b7870a
+    path: Assets/Main/Scenes/Level4.unity
+    guid: 2cec31e57c5427e428ad492c643d4adf
   - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 3e0979c1a1f81f445ad516dfe0217c5e
-  - enabled: 1
-    path: Assets/Scenes/Level4.unity
-    guid: 15d883eaa5a8b5a4b92116248dacefac
-  - enabled: 1
-    path: Assets/Scenes/YousabWorkspace2.unity
-    guid: 33d0c8c94dfb34f5b8635b24d28172dd
+    path: Assets/Main/Scenes/Level5.unity
+    guid: 9fce58b5bd73e464fbe3c42998279037
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
