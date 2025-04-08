@@ -76,6 +76,11 @@ public class SoundFXManager : MonoBehaviour {
         _sideAudioSource.Stop();
         GenericPlaySound("Capture Success");
     }
+    
+    public void PlayStep()
+    {
+        GenericPlaySound("Step");
+    }
 
     public void PlayBackButton()
     {
