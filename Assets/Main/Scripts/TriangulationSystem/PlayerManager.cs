@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         _camera = Camera.main;
-        _triangulationManager = TriangulationManager.Instance;
+        _triangulationManager = GameObject.FindGameObjectWithTag("TriangulationManager").GetComponent<TriangulationManager>();
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         
         GameObject emptyObj = new GameObject(parentName);
@@ -118,7 +118,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.SetParent(_parentTransform);
             
         // Update Scripts
-        TriangulationManager.Instance.SetPlayer(player, _pendingPlayerNum);
+        _triangulationManager.SetPlayer(player, _pendingPlayerNum);
         players[_pendingPlayerNum] = player;
         _playerFollowScripts[_pendingPlayerNum] = player.GetComponent<FoxFollow>();
             

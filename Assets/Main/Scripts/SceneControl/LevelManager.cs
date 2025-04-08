@@ -54,13 +54,16 @@ public class LevelManager : MonoBehaviour
         SelectLevel(currentLevel + 1);
     }
     
+    
+    // Make a play to highest level button
     public void CompleteLevel()
     {
-        // if (_currentLevelIndex >= highestUnlockedLevel)
-        // {
-        //     highestUnlockedLevel = level + 1;
-        // }
-        highestUnlockedLevel++;
+        print($"Level Complete {currentLevel}");
+        if (currentLevel >= highestUnlockedLevel)
+        {
+            print($"Increamenting Highest Level {highestUnlockedLevel}");
+            highestUnlockedLevel++;
+        }
         NextLevel();
     }
 
@@ -71,9 +74,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene($"Level{currentLevel}");
             _soundFXManager.onMenuScreen = false;
             _soundFXManager.SetMainAudio();
-        }
-        else
-        {
+        } else {
             print("This should never happen");
         }
     }
@@ -81,11 +82,15 @@ public class LevelManager : MonoBehaviour
     public void GoToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelect");
+        currentLevel = 0;
     }
     
     public void GotoMenu()
     {
         SceneManager.LoadScene("MenuScreen");
+        currentLevel = 0;
+        _soundFXManager.onMenuScreen = true;
+        _soundFXManager.SetMainAudio();
     }
 
     public int GetMaxUnlockedLevel()
