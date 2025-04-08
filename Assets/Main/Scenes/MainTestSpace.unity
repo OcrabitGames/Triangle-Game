@@ -289,6 +289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Owl
       objectReference: {fileID: 0}
+    - target: {fileID: 786543612409237574, guid: fd7573963f199cc448fabe358c80e94c, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4782759501218738797, guid: fd7573963f199cc448fabe358c80e94c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9
@@ -418,6 +422,14 @@ PrefabInstance:
       value: Texture Manager
       objectReference: {fileID: 0}
     - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: deerRunCycle.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: deerBlinkCycle.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
       propertyPath: 'owlRunCycle.Array.data[0]'
       value: 
       objectReference: {fileID: 2800000, guid: 9dbc24997adbfa74195ffca0bbc17738, type: 3}
@@ -453,6 +465,42 @@ PrefabInstance:
       propertyPath: 'owlRunCycle.Array.data[8]'
       value: 
       objectReference: {fileID: 2800000, guid: 25b99f11640550240a44787bc35d1468, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: f99a874c64d0a40899e07851e346fdbf, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: d884a5641cd2e4bc087bf5c20a58ae40, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: af450ed08e7714607903281c16cc0aec, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 01b0bd924363f4136b9c4bf9625bb5a3, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0f1b70887bad04bbcb9de89d3126e0a7, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 51b295bdedce84cfc99db65ed19ac4aa, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b77642df1591c4d1987d494fbe831e99, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[7]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 4d525ec7d66e44320a4a40c8a715763a, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerRunCycle.Array.data[8]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 17b358fe1fb134a8d9aeb3278105fed8, type: 3}
     - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
       propertyPath: 'foxBlinkCycle.Array.data[0]'
       value: 
@@ -494,6 +542,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2800000, guid: 426d567993202c4429df24375c8ccb49, type: 3}
     - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerBlinkCycle.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 7b10f5643243941bb86259e5a475e6d9, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerBlinkCycle.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 4c0fdd8a220e44830859274d89f69cd9, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerBlinkCycle.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 5e353f2ac4da097479974601660e6cf3, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerBlinkCycle.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 161fb2b56eea35046a6425e8a0f1303a, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'deerBlinkCycle.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 1747618dca22d2e41ac04cafc9cb4035, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
       propertyPath: 'blueFoxRunCycle.Array.data[0]'
       value: 
       objectReference: {fileID: 2800000, guid: 69a45c3d91acb3248b402eaae9feb5f9, type: 3}
@@ -529,6 +597,10 @@ PrefabInstance:
       propertyPath: 'blueFoxRunCycle.Array.data[8]'
       value: 
       objectReference: {fileID: 2800000, guid: 3377d1e98cc174a45814c350a32ba45d, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: enemyOwlBlinkCycle.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
       propertyPath: 'outlineRunCycle.Array.data[0]'
       value: 
@@ -637,6 +709,50 @@ PrefabInstance:
       propertyPath: 'purpleFoxRunCycle.Array.data[8]'
       value: 
       objectReference: {fileID: 2800000, guid: fc0ecba70e8c22a41b22c8d7d72c4c30, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyOwlBlinkCycle.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: c37ff2fee94c74a30bb3deeb71fc5314, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyOwlBlinkCycle.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 8248c5d90ad38467e9fbfcbda4a546fe, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyOwlBlinkCycle.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0eca4bc40957f4afaa6ae601aafb48f8, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyOwlBlinkCycle.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 9685f0f0950c84154a10dcee62e38c12, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyOwlBlinkCycle.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: a36359b080891403ab8fc2d1fdec2d77, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: enemyDefaultBlinkCycle.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyDefaultBlinkCycle.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 7261474df94be4c8284b52f6f72a82e3, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyDefaultBlinkCycle.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 3802d6a8b38ca4e4ab641fbe85ccc102, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyDefaultBlinkCycle.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 5e353f2ac4da097479974601660e6cf3, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyDefaultBlinkCycle.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 161fb2b56eea35046a6425e8a0f1303a, type: 3}
+    - target: {fileID: 2509021033796098564, guid: 8c49c12e154cf9b4ead25a65acdb0fae, type: 3}
+      propertyPath: 'enemyDefaultBlinkCycle.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 1747618dca22d2e41ac04cafc9cb4035, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
