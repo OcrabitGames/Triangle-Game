@@ -1062,4 +1062,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
-  parentName: Owl
+  parentName: Fox

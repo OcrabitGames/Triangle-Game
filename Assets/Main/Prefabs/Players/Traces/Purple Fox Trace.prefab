@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &3469250116602876591
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &4147598766379668079
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &5069703808366700754
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &5127423263632197563
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,6 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &5653083100813898093
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,6 +810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFox: 1
+  parentName: Fox
 --- !u!1 &5935030612007378560
 GameObject:
   m_ObjectHideFlags: 0
