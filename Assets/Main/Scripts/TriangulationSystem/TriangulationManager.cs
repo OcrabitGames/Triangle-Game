@@ -201,7 +201,7 @@ public class TriangulationManager : MonoBehaviour
         var lineObj = Instantiate(linePrefab);
         var lineScript = lineObj.GetComponent<LineCube>();
         lineScript.Initialize(start, end, true);
-        lineObj.SetActive(false);
+        //lineObj.SetActive(false);
         return lineScript;
     }
 
