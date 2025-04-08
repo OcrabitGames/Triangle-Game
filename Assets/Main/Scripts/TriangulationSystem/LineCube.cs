@@ -1,64 +1,67 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer))]
 public class LineCube : MonoBehaviour
 {
     private Vector3 pointA;
     private Vector3 pointB;
+    
+    private LineRenderer lineRenderer;
 
     public bool isActive;
-    public bool isRotating = true;
-    public float rotationSpeed = 30f;
+    public Material dashedLineMaterial;
 
-    // Initialize the cube between two points
-    public void Initialize(Vector3 start, Vector3 end, bool first=false)
+    public void Initialize(Vector3 start, Vector3 end, bool first = false)
     {
-        gameObject.SetActive(true);
         pointA = start;
         pointB = end;
         isActive = true;
-        isRotating = true;
-        
+
+        if (lineRenderer == null)
+        {
+            lineRenderer = GetComponent<LineRenderer>();
+        }
+
+        lineRenderer.material = dashedLineMaterial;
+        lineRenderer.positionCount = 2;
+        lineRenderer.useWorldSpace = true;
+        lineRenderer.startWidth = 0.2f;
+        lineRenderer.endWidth = 0.2f;
+
         if (first) return;
-        UpdateTransform();
+
+        UpdateLine();
     }
 
-    // Redefine endpoints and update line
     public void UpdateEndpoints(Vector3 newStart, Vector3 newEnd)
     {
         pointA = newStart;
         pointB = newEnd;
-        UpdateTransform();
+        UpdateLine();
     }
 
-    // Deactivate this cube-line
     public void Deactivate()
     {
-        gameObject.SetActive(false);
         isActive = false;
+        lineRenderer.enabled = false;
     }
 
-    // Updates position, rotation, and scale to match endpoints
-    private void UpdateTransform()
-    {
-        Vector3 direction = pointB - pointA;
-        Vector3 midPoint = (pointA + pointB) / 2f;
-
-        transform.position = midPoint;
-
-        // Face the direction from pointA to pointB
-        transform.rotation = Quaternion.LookRotation(direction);
-        
-        // Rotate to align thickness on Z-axis, then apply Z-axis rotation later
-        transform.localScale = new Vector3(0.1f, 0.1f, direction.magnitude);
-    }
-
-    void Update()
+    private void UpdateLine()
     {
         if (!isActive) return;
 
-        if (isRotating)
-        {
-            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime, Space.Self);
-        }
+        lineRenderer.enabled = true;
+        
+        Vector3 groundA = new Vector3(pointA.x, 0f, pointA.z);
+        Vector3 groundB = new Vector3(pointB.x, 0f, pointB.z);
+
+        lineRenderer.SetPosition(0, groundA);
+        lineRenderer.SetPosition(1, groundB);
+    }
+
+    void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
     }
 }

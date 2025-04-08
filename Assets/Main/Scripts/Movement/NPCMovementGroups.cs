@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPCMovementGroups : MonoBehaviour
@@ -39,7 +40,7 @@ public class NPCMovementGroups : MonoBehaviour
         {
             Transform npc = children[i];
             Transform target = targetSpots[currentTargetIndices[i]];
-
+            if (npc == null) continue;
             Vector3 delta = target.position - npc.position;
             delta.y = 0f;
 
@@ -69,12 +70,14 @@ public class NPCMovementGroups : MonoBehaviour
 
         int neighborCount = 0;
         float separationDistance = 2f;
+        float collisionAvoidanceDistance = 0.7f;
 
         for (int i = 0; i < children.Length; i++)
         {
             if (i == index) continue;
 
             Transform other = children[i];
+            if (owl == null || other == null) continue;
             float distance = Vector3.Distance(owl.position, other.position);
             if (distance < neighborRadius)
             {
@@ -86,8 +89,14 @@ public class NPCMovementGroups : MonoBehaviour
 
                 cohesion += other.position;
 
-                if (distance < separationDistance)
+                if (distance < collisionAvoidanceDistance)
+                {
+                    separation += (owl.position - other.position).normalized * (1.5f / distance);
+                }
+                else if (distance < separationDistance)
+                {
                     separation += (owl.position - other.position) / distance;
+                }
             }
         }
 
@@ -104,5 +113,6 @@ public class NPCMovementGroups : MonoBehaviour
 
         return direction;
     }
+
 
 }

@@ -24,7 +24,7 @@ public class FoxMovement : MonoBehaviour
     public void MoveDirection(Vector3 input, float speed = -1f)
     {
         if (speed != -1f) movementSpeed = speed;
-        
+
         // Horizontal movement
         if (input.x < 0)
         {
@@ -61,7 +61,7 @@ public class FoxMovement : MonoBehaviour
             if (Mathf.Abs(zVel) <= 0.01f) zVel = 0f;
         }
     }
-    
+
     public void MoveToward(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
@@ -72,6 +72,12 @@ public class FoxMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.MovePosition(new Vector3(_rb.position.x + xVel, _rb.position.y, _rb.position.z + zVel));
+    }
+
+    public void StopMovement()
+    {
+        xVel = 0f;
+        zVel = 0f;
     }
 }
 
