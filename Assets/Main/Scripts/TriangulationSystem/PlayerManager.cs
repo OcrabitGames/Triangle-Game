@@ -1,5 +1,4 @@
 using System;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -15,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     
     private Transform _parentTransform;
     private bool _waitToSpawn;
+    private bool _tracePlaced = false;
+    
     [SerializeField] private GameObject[] players = new GameObject[3];
     private FoxFollow[] _playerFollowScripts = new FoxFollow[3];
     private GameObject _playerTrace;
@@ -54,6 +55,7 @@ public class PlayerManager : MonoBehaviour
         {
             _pendingPlayerNum = num;
             _waitToSpawn = true;
+            _tracePlaced = false; // skip first click
             SpawnTransparentTrace();
         }
         else
@@ -77,45 +79,60 @@ public class PlayerManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Vector3 newPosition = hit.point;
-            newPosition.y = transform.position.y;
+            newPosition.y = groundLevel;
             if (_playerTrace)
             {
-                newPosition.y = groundLevel;
                 _playerTrace.transform.position = newPosition;
             }
         }
-
+        
+        // Skip first click
+        if (!_tracePlaced)
+        {
+            // Wait until the UI click is released before accepting placement
+            if (Input.GetMouseButtonUp(0))
+            {
+                _tracePlaced = true;
+            }
+            return;
+        }
+        
         // If clicked to Spawn Player
         if (Input.GetMouseButtonDown(0))
         {
-            // Play sound
-            soundManager.GetComponent<SoundFXManager>().PlaySound(placeSound);
+            SpawnPlayerAtTrace();
+        }
+    }
 
-            // Get Trace Position
-            Vector3 spawnPosition = _playerTrace ? _playerTrace.transform.position : transform.position;
+    private void SpawnPlayerAtTrace()
+    {
+        // Play sound
+        soundManager.GetComponent<SoundFXManager>().PlaySound(placeSound);
+
+        // Get Trace Position
+        Vector3 spawnPosition = _playerTrace ? _playerTrace.transform.position : transform.position;
             
-            // Spawn and Set Hierarchy
-            GameObject player = Instantiate(playerPrefabs[_pendingPlayerNum], spawnPosition, Quaternion.identity);
-            player.name = "Player" + _pendingPlayerNum;
-            player.transform.SetParent(_parentTransform);
+        // Spawn and Set Hierarchy
+        GameObject player = Instantiate(playerPrefabs[_pendingPlayerNum], spawnPosition, Quaternion.identity);
+        player.name = "Player" + _pendingPlayerNum;
+        player.transform.SetParent(_parentTransform);
             
-            // Update Scripts
-            TriangulationManager.Instance.SetPlayer(player, _pendingPlayerNum);
-            players[_pendingPlayerNum] = player;
-            _playerFollowScripts[_pendingPlayerNum] = player.GetComponent<FoxFollow>();
+        // Update Scripts
+        TriangulationManager.Instance.SetPlayer(player, _pendingPlayerNum);
+        players[_pendingPlayerNum] = player;
+        _playerFollowScripts[_pendingPlayerNum] = player.GetComponent<FoxFollow>();
             
-            // Set Movement
-            activePlayerNum = _pendingPlayerNum;
-            _playerFollowScripts[_pendingPlayerNum].Initialize(enemy);
+        // Set Movement
+        activePlayerNum = _pendingPlayerNum;
+        _playerFollowScripts[_pendingPlayerNum].Initialize(enemy);
 
 
-            // Reset Trace
-            _waitToSpawn = false;
-            if (_playerTrace)
-            {
-                Destroy(_playerTrace);
-                _playerTrace = null;
-            }
+        // Reset Trace
+        _waitToSpawn = false;
+        if (_playerTrace)
+        {
+            Destroy(_playerTrace);
+            _playerTrace = null;
         }
     }
 
