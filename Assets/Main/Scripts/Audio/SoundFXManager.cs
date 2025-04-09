@@ -25,6 +25,7 @@ public class SoundFXManager : MonoBehaviour {
     public List<SoundClipPair> ClipList;
     private Dictionary<string, AudioClip> ClipDictionary;
     public bool onMenuScreen = true;
+    private bool _cachedMenuBool = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
@@ -40,23 +41,29 @@ public class SoundFXManager : MonoBehaviour {
                 ClipDictionary[pair.name] = pair.clip;
             }
         }
-
         SetMainAudio();
     }
 
     public void SetMainAudio()
     {
-        _mainAudioSource.Stop();
-        _mainAudioSource.loop = true;
-        if (onMenuScreen)
+        if (_cachedMenuBool != onMenuScreen)
         {
-            _mainAudioSource.clip = GenericGetSound("MenuMusic");
-            _mainAudioSource.volume = 1f;
-        } else {
-            _mainAudioSource.clip = GenericGetSound("GameMusic");
-            _mainAudioSource.volume = .9f;
+            // Set Cached Value
+            _cachedMenuBool = onMenuScreen;
+            
+            print("Inside Cached Check");
+            _mainAudioSource.Stop();
+            _mainAudioSource.loop = true;
+            if (onMenuScreen)
+            {
+                _mainAudioSource.clip = GenericGetSound("MenuMusic");
+                _mainAudioSource.volume = 1f;
+            } else {
+                _mainAudioSource.clip = GenericGetSound("GameMusic");
+                _mainAudioSource.volume = .9f;
+            }
+            _mainAudioSource.Play();
         }
-        _mainAudioSource.Play();
     }
     
     public void PlaySound(AudioClip sound) {
