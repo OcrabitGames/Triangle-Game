@@ -5235,6 +5235,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 867613217}
     m_Modifications:
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1933378939}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayBackButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SoundFXManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 290127080344935380, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3345152392151655415, guid: cf71e40bd502e41f88c8a2a3a4dd057d, type: 3}
       propertyPath: m_Name
       value: MenuButton
