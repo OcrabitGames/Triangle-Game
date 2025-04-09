@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eebb8b70599c45f99ee7a80c55e0c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLevelButton: 1
+  isLevelButton: 0
   disabledColor: {r: 0.6431373, g: 0.4509804, b: 0.44705883, a: 1}
   enabledColor: {r: 0.44705883, g: 0.6431373, b: 0.54509807, a: 1}
   levelNum: 1

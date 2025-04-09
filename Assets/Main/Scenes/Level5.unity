@@ -7063,7 +7063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1435079932}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SpawnOrSelectPlayer
         m_Mode: 3
@@ -7967,7 +7967,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1435079932}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SpawnOrSelectPlayer
         m_Mode: 3
@@ -8949,7 +8949,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1435079932}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SpawnOrSelectPlayer
         m_Mode: 3
@@ -9239,6 +9239,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 980cad7a216674938ba764cf3f041f32, type: 3}
+--- !u!114 &1435079932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4605333164719079434, guid: 980cad7a216674938ba764cf3f041f32, type: 3}
+  m_PrefabInstance: {fileID: 1435079931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfed89a1a08c34fc2a780944f038753b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1472728806
 GameObject:
   m_ObjectHideFlags: 0
