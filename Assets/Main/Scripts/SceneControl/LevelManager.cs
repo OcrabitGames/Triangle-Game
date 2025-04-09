@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour
         if (highestUnlockedLevel >= level) {
             print($"Level Set to {level}");
             currentLevel = level;
-            ShowLevelText($"Level {level}"); // New line added
+            if (currentLevel > numberOfLevels) {ShowLevelText($"Game Complete!!!");}
             UpdateLevelScene();
         } else {
             print("Level not unlocked");
@@ -153,18 +153,26 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator AnimateAndDestroyLevelText(GameObject instance, TMP_Text tmpText, float duration)
     {
+        if (!instance)
+            yield break;
+        
         float timer = 0f;
         Vector3 originalScale = instance.transform.localScale;
         Vector3 targetScale = originalScale * 1.5f;
 
         while (timer < duration)
         {
+            if (!instance)
+                yield break;
+
             float t = timer / duration;
             instance.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+
             timer += Time.deltaTime;
             yield return null;
         }
 
-        Destroy(instance);
+        if (instance)
+            Destroy(instance);
     }
 }
