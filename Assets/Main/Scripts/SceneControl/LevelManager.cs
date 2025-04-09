@@ -61,12 +61,16 @@ public class LevelManager : MonoBehaviour
         print($"Level Complete {currentLevel}");
         if (currentLevel >= highestUnlockedLevel)
         {
-            print($"Increamenting Highest Level {highestUnlockedLevel}");
+            print($"Incrementing Highest Level {highestUnlockedLevel}");
             highestUnlockedLevel++;
         }
         NextLevel();
     }
 
+    public void GoToHighestUnlockedLevel() {
+        SelectLevel(highestUnlockedLevel);
+    }
+    
     public void UpdateLevelScene()
     {
         if (currentLevel <= 5)

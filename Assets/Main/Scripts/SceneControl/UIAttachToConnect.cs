@@ -66,4 +66,6 @@ public class UIAttachToConnect : MonoBehaviour
     {
         _levelManager.GoToLevelSelect();
     }
+
+    public void GoToHighestUnlockedLevel() { _levelManager.GoToHighestUnlockedLevel(); }
 }
