@@ -14,6 +14,10 @@ public class TriangularPlane : MonoBehaviour
     
     private TriangulationManager _triangulationManager;
 
+    // Stops from ending early
+    private int _lastTriggerStayFrame; 
+    public int maxAllowedFrameGap = 100; 
+
     private void Awake()
     {
         meshFilter = GetComponent<MeshFilter>();
@@ -58,6 +62,7 @@ public class TriangularPlane : MonoBehaviour
             } else {
                 _curTimeRequired -= Time.deltaTime;
             }
+            _lastTriggerStayFrame = Time.frameCount; // Update lastTriggerStayFrame
         }
     }
 
@@ -65,6 +70,11 @@ public class TriangularPlane : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            var frameDiff = Time.frameCount - _lastTriggerStayFrame;
+            if (frameDiff <= maxAllowedFrameGap)
+                return;
+            print(frameDiff);
+            
             _curTimeRequired = _timeRequired;
             _triangulationManager.soundFXManager.StopCapture();
         }
