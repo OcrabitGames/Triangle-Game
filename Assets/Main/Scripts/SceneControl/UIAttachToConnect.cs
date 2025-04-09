@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIAttachToConnect : MonoBehaviour
 {
     private LevelManager _levelManager;
+    private SoundFXManager _soundManager;
     [SerializeField] private bool isLevelButton = false;
     [SerializeField] private Color disabledColor = new Color(164f/255f, 115f/255f, 114f/255f); // A47372
     [SerializeField] private Color enabledColor = new Color(114f/255f, 164f/255f, 139f/255f); // 72A48B
@@ -14,6 +15,7 @@ public class UIAttachToConnect : MonoBehaviour
     void Start()
     {
         _levelManager = LevelManager.Instance;
+        _soundManager = SoundFXManager.Instance;
         
         if (_levelManager == null)
         {
@@ -68,4 +70,9 @@ public class UIAttachToConnect : MonoBehaviour
     }
 
     public void GoToHighestUnlockedLevel() { _levelManager.GoToHighestUnlockedLevel(); }
+
+    public void PlayButtonPressed()
+    {
+        _soundManager.PlayPressButton();
+    }
 }
