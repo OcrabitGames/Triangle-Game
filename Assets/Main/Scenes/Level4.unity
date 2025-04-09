@@ -6657,6 +6657,7 @@ GameObject:
   - component: {fileID: 625821117}
   - component: {fileID: 625821116}
   - component: {fileID: 625821115}
+  - component: {fileID: 625821118}
   m_Layer: 5
   m_Name: PurpleFox
   m_TagString: Untagged
@@ -6739,9 +6740,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1933378939}
-        m_TargetAssemblyTypeName: SoundFXManager, Assembly-CSharp
-        m_MethodName: PlayPressButton
+      - m_Target: {fileID: 625821118}
+        m_TargetAssemblyTypeName: UIAttachToConnect, Assembly-CSharp
+        m_MethodName: PlayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6789,6 +6790,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625821113}
   m_CullTransparentMesh: 1
+--- !u!114 &625821118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625821113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eebb8b70599c45f99ee7a80c55e0c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelButton: 0
+  disabledColor: {r: 0.6431373, g: 0.4509804, b: 0.44705883, a: 1}
+  enabledColor: {r: 0.44705883, g: 0.6431373, b: 0.54509807, a: 1}
+  levelNum: 0
 --- !u!1 &665882283
 GameObject:
   m_ObjectHideFlags: 0
@@ -8109,6 +8126,7 @@ GameObject:
   - component: {fileID: 1090018584}
   - component: {fileID: 1090018583}
   - component: {fileID: 1090018582}
+  - component: {fileID: 1090018585}
   m_Layer: 5
   m_Name: PinkFox
   m_TagString: Untagged
@@ -8191,9 +8209,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1933378939}
-        m_TargetAssemblyTypeName: SoundFXManager, Assembly-CSharp
-        m_MethodName: PlayPressButton
+      - m_Target: {fileID: 1090018585}
+        m_TargetAssemblyTypeName: UIAttachToConnect, Assembly-CSharp
+        m_MethodName: PlayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8241,6 +8259,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090018580}
   m_CullTransparentMesh: 1
+--- !u!114 &1090018585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1090018580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eebb8b70599c45f99ee7a80c55e0c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelButton: 0
+  disabledColor: {r: 0.6431373, g: 0.4509804, b: 0.44705883, a: 1}
+  enabledColor: {r: 0.44705883, g: 0.6431373, b: 0.54509807, a: 1}
+  levelNum: 0
 --- !u!1001 &1120212938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9054,6 +9088,7 @@ GameObject:
   - component: {fileID: 1336708785}
   - component: {fileID: 1336708784}
   - component: {fileID: 1336708783}
+  - component: {fileID: 1336708786}
   m_Layer: 5
   m_Name: BlueFox
   m_TagString: Untagged
@@ -9136,9 +9171,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1933378939}
-        m_TargetAssemblyTypeName: SoundFXManager, Assembly-CSharp
-        m_MethodName: PlayPressButton
+      - m_Target: {fileID: 1336708786}
+        m_TargetAssemblyTypeName: UIAttachToConnect, Assembly-CSharp
+        m_MethodName: PlayButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9186,6 +9221,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336708781}
   m_CullTransparentMesh: 1
+--- !u!114 &1336708786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336708781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eebb8b70599c45f99ee7a80c55e0c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLevelButton: 0
+  disabledColor: {r: 0.6431373, g: 0.4509804, b: 0.44705883, a: 1}
+  enabledColor: {r: 0.44705883, g: 0.6431373, b: 0.54509807, a: 1}
+  levelNum: 0
 --- !u!1001 &1384257622
 PrefabInstance:
   m_ObjectHideFlags: 0
