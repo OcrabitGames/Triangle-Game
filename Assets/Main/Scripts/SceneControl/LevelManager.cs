@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,9 +19,30 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int numberOfLevels = 5;
     [SerializeField] private int currentLevel; // Note 0 means menu
     [SerializeField] private int highestUnlockedLevel = 1;
-    
+    [SerializeField] private GameObject levelTextPrefab;
+
     // Reference Scripts
     private SoundFXManager _soundFXManager;
+
+    // Some funcs to get and tack on the text appearing when the scene loads
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name.StartsWith("Level") && currentLevel != 0)
+        {
+            if (currentLevel > numberOfLevels) {ShowLevelText($"Game Complete!!!"); return; }
+            ShowLevelText($"Level {currentLevel}");
+        }
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +66,7 @@ public class LevelManager : MonoBehaviour
         if (highestUnlockedLevel >= level) {
             print($"Level Set to {level}");
             currentLevel = level;
+            ShowLevelText($"Level {level}"); // New line added
             UpdateLevelScene();
         } else {
             print("Level not unlocked");
@@ -58,10 +82,10 @@ public class LevelManager : MonoBehaviour
     // Make a play to highest level button
     public void CompleteLevel()
     {
-        print($"Level Complete {currentLevel}");
+        //print($"Level Complete {currentLevel}");
         if (currentLevel >= highestUnlockedLevel)
         {
-            print($"Incrementing Highest Level {highestUnlockedLevel}");
+            //print($"Incrementing Highest Level {highestUnlockedLevel}");
             highestUnlockedLevel++;
         }
         NextLevel();
@@ -100,5 +124,47 @@ public class LevelManager : MonoBehaviour
     public int GetMaxUnlockedLevel()
     {
         return highestUnlockedLevel;
+    }
+
+    public void ShowLevelText(string text, float duration = 2f)
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        if (canvas == null)
+        {
+            Debug.LogWarning("Canvas not found in the scene.");
+            return;
+        }
+
+        if (levelTextPrefab == null)
+        {
+            Debug.LogWarning("Level text prefab not assigned.");
+            return;
+        }
+
+        GameObject levelTextInstance = Instantiate(levelTextPrefab, canvas.transform);
+        TMP_Text tmpText = levelTextInstance.GetComponent<TMP_Text>();
+
+        if (tmpText)
+        {
+            tmpText.text = text;
+            StartCoroutine(AnimateAndDestroyLevelText(levelTextInstance, tmpText, duration));
+        }
+    }
+
+    private IEnumerator AnimateAndDestroyLevelText(GameObject instance, TMP_Text tmpText, float duration)
+    {
+        float timer = 0f;
+        Vector3 originalScale = instance.transform.localScale;
+        Vector3 targetScale = originalScale * 1.5f;
+
+        while (timer < duration)
+        {
+            float t = timer / duration;
+            instance.transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(instance);
     }
 }
